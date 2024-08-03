@@ -17,12 +17,14 @@ Route::get('/contact', function () {
     return view('contact', ['title' => 'Contact']);
 });
 
+// List Posts:
 Route::get('/posts', function () {
     return view('posts', [
-        'title' => 'Blog', 
-        'posts' => Post::filter(request(['search', 'category', 'author']))->latest()->get()]);
+        'title' => 'Blog Posts', 
+        'posts' => Post::filter(request(['search', 'category', 'author']))->latest()->paginate(9),
+    ]);
 });
-
+// Single Post:
 Route::get('/posts/{post:slug}', function(Post $post) {
     return  view('post', ['title' => $post->title, 'post' => $post]);
 });
