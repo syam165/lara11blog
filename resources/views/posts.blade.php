@@ -1,6 +1,7 @@
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
 
+    {{-- Search --}}
     <div class="max-w-screen-xl px-4 py-4 mx-auto lg:px-6">
         <div class="max-w-screen-md mx-auto sm:text-center">
             <form>
@@ -28,6 +29,7 @@
         </div>
     </div>
    
+    {{-- Listing Posts --}}
     <div class="max-w-screen-xl px-4 py-4 mx-auto lg:py-4 md:px-0 lg:px-0">
         <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             @forelse ($posts as $post)
@@ -71,7 +73,8 @@
             @endforelse
 
         </div>
-            
+        
+        {{-- Pagination --}}
         <div class="pt-6 pb-12">
             {{ $posts->onEachSide(3)->links() }}
         </div>

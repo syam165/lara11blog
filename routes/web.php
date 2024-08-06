@@ -1,9 +1,10 @@
 <?php
 
-use App\Models\User;
 use App\Models\Post;
+use App\Models\User;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
     return view('home', ['title' => 'Home']);
@@ -36,3 +37,21 @@ Route::get('/authors/{user:username}', function(User $user) {
 Route::get('/categories/{category:slug}', function(Category $category) {
     return  view('posts', ['title' => count($category->posts) . ' Articles in : ' . $category->name, 'posts' => $category->posts]);
 });
+
+// Breeze Auth
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+// Welcome
+Route::get('/welcome', function () {
+    return view('welcome');
+});
+
+require __DIR__.'/auth.php';
