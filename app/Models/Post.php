@@ -2,14 +2,17 @@
 
 namespace App\Models;
 
+use Plank\Mediable\Mediable;
+use Plank\Mediable\MediableInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Post extends Model
+class Post extends Model implements MediableInterface
 {
     use HasFactory;
+    use Mediable;
     protected $fillable = ['title', 'author', 'slug', 'body'];
 
     // Eager Loading
