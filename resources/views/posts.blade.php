@@ -2,7 +2,7 @@
     <x-slot:title>{{ $title }}</x-slot:title>
 
     {{-- Search --}}
-    <div class="max-w-screen-xl px-4 py-3 mx-auto lg:px-6">
+    <div class="max-w-screen-xl px-4 mx-auto lg:px-6">
         <div class="max-w-screen-md mx-auto sm:text-center">
             <form>
                 @if(request('category'))
@@ -20,7 +20,7 @@
                             </svg>
                         </div>
                         {{-- Search input --}}
-                        <input class="block w-full p-3 pl-10 text-base text-gray-700 border-0 border-gray-300 rounded-full shadow-lg bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search article" type="search" id="search" name="search" autocomplete="off">
+                        <input class="block w-full p-3 pl-10 text-base text-gray-500 border-0 border-gray-300 rounded-full shadow-md bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search article" type="search" id="search" name="search" autocomplete="off">
                     </div>
                     {{-- Search button: hidden --}}
                     <div class="hidden shadow-md">

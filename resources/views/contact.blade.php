@@ -1,8 +1,8 @@
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
     
-    <main class="pt-8 pb-16 lg:pt-12 lg:pb-24 bg-white dark:bg-gray-900 antialiased">
-        <div class="text-lg px-5 mx-auto max-w-screen-xl">
+    <main class="pt-8 pb-16 antialiased bg-white rounded-lg shadow lg:pt-12 lg:pb-24 dark:bg-gray-900">
+        <div class="max-w-screen-xl px-5 mx-auto text-lg">
             <h3 class="text-xl">Anda dapat menghubungi kami di:</h3>
             <ul>
                 <li>Email: smasa@gmail.com</li>

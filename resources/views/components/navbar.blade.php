@@ -16,7 +16,7 @@
         </div>
         <div class="hidden md:block">
           <div class="flex items-center ml-4 md:ml-6">
-            <!-- Profile dropdown -->
+            {{-- Profile dropdown --}}
             <div class="relative ml-3">
               <div>
                 <button type="button" @click="isOpen = !isOpen" class="relative flex items-center max-w-xs text-sm bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
@@ -33,7 +33,7 @@
               x-transition:leave="transition ease-in duration-75 transform"
               x-transition:leave-start="opacity-100 scale-100"
               x-transition:leave-end="opacity-0 scale-95" class="absolute right-0 z-10 w-48 py-1 py-4 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                <!-- Active: "bg-gray-100", Not Active: "" -->
+                {{-- Active: "bg-gray-100", Not Active: "" --}}
                 <a href="/login" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">
                   <svg class="inline w-4 h-4 text-gray-700 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12H4m12 0-4 4m4-4-4-4m3-4h2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3h-2"/>
@@ -47,15 +47,15 @@
           </div>
         </div>
         <div class="flex -mr-2 md:hidden">
-          <!-- Mobile menu button -->
+          {{-- Mobile menu button --}}
           <button type="button" @click="isOpen = !isOpen" class="relative inline-flex items-center justify-center p-2 text-gray-400 bg-gray-800 rounded-md hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" aria-controls="mobile-menu" aria-expanded="false">
             <span class="absolute -inset-0.5"></span>
             <span class="sr-only">Open main menu</span>
-            <!-- Menu open: "hidden", Menu closed: "block" -->
+            {{-- Menu open: "hidden", Menu closed: "block" --}}
             <svg :class="{'hidden': isOpen, 'block': !isOpen }" class="block w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
             </svg>
-            <!-- Menu open: "block", Menu closed: "hidden" -->
+            {{-- Menu open: "block", Menu closed: "hidden" --}}
             <svg :class="{'block': isOpen, 'hidden': !isOpen }" class="hidden w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
@@ -64,10 +64,10 @@
       </div>
     </div>
 
-    <!-- Mobile menu, show/hide based on menu state. -->
+    {{-- Mobile menu, show/hide based on menu state. --}}
     <div x-show="isOpen" class="md:hidden" id="mobile-menu">
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+        {{-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --}}
         <a href="/" class="block px-3 py-2 text-base font-medium text-white bg-gray-900 rounded-md" aria-current="page">Home</a>
         <a href="/posts" class="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Blog</a>
         <a href="/about" class="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">About</a>
