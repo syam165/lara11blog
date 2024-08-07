@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
@@ -18,29 +18,18 @@ Route::get('/contact', function () {
     return view('contact', ['title' => 'Contact']);
 });
 
-// List Posts:
-Route::get('/posts', function () {
-    return view('posts', [
-        'title' => 'Blog Posts', 
-        'posts' => Post::filter(request(['search', 'category', 'author']))->latest()->paginate(9),
-    ]);
-});
+// Listing Posts:
+Route::get('/posts', [ PostController::class, 'index' ]);
 // Single Post:
-Route::get('/posts/{post:slug}', function(Post $post) {
-    return  view('post', ['title' => $post->title, 'post' => $post]);
-});
+Route::get('/posts/{post:slug}', [ PostController::class, 'show' ]);
+// Posts by Author:
+Route::get('/authors/{user:username}', [ PostController::class, 'author' ]);
+// Posts by Category:
+Route::get('/categories/{category:slug}', [ PostController::class, 'category' ]);
 
-Route::get('/authors/{user:username}', function(User $user) {
-    return  view('posts', ['title' => count($user->posts) . ' Articles by : ' . $user->name, 'posts' => $user->posts]);
-});
-
-Route::get('/categories/{category:slug}', function(Category $category) {
-    return  view('posts', ['title' => count($category->posts) . ' Articles in : ' . $category->name, 'posts' => $category->posts]);
-});
-
-// Breeze Auth
-Route::get('/dashboard', function () {
-    return view('dashboard');
+// Admin Dashboard
+Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -48,10 +37,17 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-// Welcome
-Route::get('/welcome', function () {
-    return view('welcome');
-});
+// Admin Posts
+Route::get('/admin/posts', function () {
+    return view('admin.posts');
+})->middleware(['auth', 'verified'])->name('admin.posts');
+// Admin Categories
+Route::get('/admin/categories', function () {
+    return view('admin.categories');
+})->middleware(['auth', 'verified'])->name('admin.categories');
+// Admin Media
+Route::get('/admin/media', function () {
+    return view('admin.media');
+})->middleware(['auth', 'verified'])->name('admin.media');
 
 require __DIR__.'/auth.php';

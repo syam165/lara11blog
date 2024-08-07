@@ -26,8 +26,8 @@
     @endphp
 
     <main>
-      <div class="py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        {{-- Your content --}}
+      <div class="py-10 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        {{-- Main content --}}
         {{ $slot }}
       </div>
     </main>
