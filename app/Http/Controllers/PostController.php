@@ -12,7 +12,7 @@ class PostController extends Controller
     public function index()
     {
         return view('posts', [
-            'title' => 'Blog Posts', 
+            'title' => 'All Posts', 
             'posts' => Post::filter(request(['search', 'category', 'author']))->latest()->paginate(9),
         ]);
     }
@@ -28,7 +28,7 @@ class PostController extends Controller
     public function author(User $user)
     {
         return  view('posts', [
-            'title' => count($user->posts) . ' Articles by : ' . $user->name, 
+            'title' => count($user->posts) . ' Posts by Author: ' . $user->name, 
             'posts' => $user->posts,
         ]);
     }
@@ -36,7 +36,7 @@ class PostController extends Controller
     public function category(Category $category)
     {
         return  view('posts', [
-            'title' => count($category->posts) . ' Articles in : ' . $category->name, 
+            'title' => count($category->posts) . ' Posts by Category: ' . $category->name, 
             'posts' => $category->posts,
         ]);
     }

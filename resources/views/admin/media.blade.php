@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-2xl font-bold leading-tight text-gray-800 dark:text-gray-200">
-            {{ __('Media') }}
+        <h2 class="text-2xl font-bold leading-tight text-gray-400 dark:text-gray-200">
+            {{ __('Manage Media') }}
         </h2>
     </x-slot>
 

@@ -16,7 +16,7 @@
     <x-navbar></x-navbar>
   
     @php
-      if ($title=='About' || $title=='Contact') {
+      if ($title=='About' || $title=='Contact' || Str::is('*Posts by*', $title)) {
     @endphp
       <x-header>
           {{ $title }}
@@ -26,7 +26,7 @@
     @endphp
 
     <main>
-      <div class="py-10 mx-auto max-w-7xl sm:px-6 lg:px-8">
+      <div class="py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
         {{-- Main content --}}
         {{ $slot }}
       </div>

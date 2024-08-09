@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Post;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\User;
 use App\Models\Category;
 use Illuminate\Database\Seeder;
@@ -15,21 +14,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-
-        // Post::create([
-        //     'title' => 'Using Model Factories',
-        //     'author_id' => 1,
-        //     'category_id' => 1,
-        //     'slug' => 'using-model-factories',
-        //     'body' => 'Of course, manually specifying the attributes for each model seed is cumbersome. Instead, you can use model factories to conveniently generate large amounts of database records. First, review the model factory documentation to learn how to define your factories.'
-        // ]);
-
         $this->call([
             CategorySeeder::class,
             UserSeeder::class

@@ -13,7 +13,7 @@ class Post extends Model implements MediableInterface
 {
     use HasFactory;
     use Mediable;
-    protected $fillable = ['title', 'author', 'slug', 'body'];
+    protected $fillable = ['title', 'excerpt', 'author', 'slug', 'body'];
 
     // Eager Loading
     protected $with = ['author', 'category'];

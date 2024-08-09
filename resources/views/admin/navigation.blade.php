@@ -1,14 +1,8 @@
-<nav x-data="{ open: false }" class="bg-gray-700 border-b border-gray-100 dark:bg-gray-800 dark:border-gray-700">
+<nav x-data="{ open: false }" class="bg-gray-700 border-b border-gray-400 shadow-lg dark:bg-gray-800 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
-                <!-- Logo -->
-                <div class="flex items-center shrink-0">
-                    <a href="/" target="_blank">
-                        <x-application-logo class="block w-auto text-gray-300 fill-current h-9 dark:text-gray-200" />
-                    </a>
-                </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
@@ -26,6 +20,10 @@
 
                     <x-dashboard-nav-link :href="route('admin.media')" :active="request()->routeIs('admin.media')">
                         {{ __('Media') }}
+                    </x-dashboard-nav-link>
+
+                    <x-dashboard-nav-link :href="route('admin.users')" :active="request()->routeIs('admin.users')">
+                        {{ __('Users') }}
                     </x-dashboard-nav-link>
                     
                 </div>
@@ -47,7 +45,7 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.edit')">
+                        <x-dropdown-link :href="route('profile')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
@@ -65,7 +63,7 @@
                 </x-dropdown>
             </div>
 
-            <!-- Hamburger -->
+            <!-- Hamburger menu -->
             <div class="flex items-center -me-2 sm:hidden">
                 <button @click="open = ! open" class="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-900 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-900 focus:text-gray-500 dark:focus:text-gray-400">
                     <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
@@ -86,21 +84,21 @@
         </div>
 
         <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
+        <div class="pt-4 pb-1 border-gray-200 dark:border-gray-600">
             <div class="px-4">
                 <div class="text-base font-medium text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
                 <div class="text-sm font-medium text-gray-500">{{ Auth::user()->email }}</div>
             </div>
 
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')">
+                {{-- Account Profile edit --}}
+                <x-responsive-nav-link :href="route('profile')">
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
 
-                <!-- Authentication -->
+                <!-- Log Out -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
